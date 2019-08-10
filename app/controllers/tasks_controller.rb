@@ -6,8 +6,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    set_task
-    
   end
 
   def new
@@ -27,12 +25,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    set_task
   end
 
   def update
-    set_task
-    
     if @task.update(task_params)
       flash[:succcess] = 'Task は正常に更新されました'
       redirect_to @task
@@ -43,7 +38,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    set_task
     @task.destroy
     
     flash[:success] = 'Task は正常に削除されました'
@@ -54,10 +48,6 @@ class TasksController < ApplicationController
   
   def set_task
     @task = Task.find(params[:id])
-  end
-  
-  def task_params
-    params.require(:task).permit(:content)
   end
   
   #Strong Parameter
